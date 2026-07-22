@@ -1,0 +1,56 @@
+# ---------------------------------------------------------
+# Python
+# ---------------------------------------------------------
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# Virtual environments (do NOT commit — recreate with requirements.txt)
+venv/
+.venv/
+env/
+ENV/
+
+# ---------------------------------------------------------
+# Distribution / packaging
+# ---------------------------------------------------------
+build/
+dist/
+*.egg-info/
+.eggs/
+
+# ---------------------------------------------------------
+# Jupyter / IPython
+# ---------------------------------------------------------
+.ipynb_checkpoints/
+*.ipynb_checkpoints
+
+# ---------------------------------------------------------
+# TensorFlow / experiment artifacts
+# ---------------------------------------------------------
+# TensorBoard event logs and per-run fit directories can get large.
+outputs/logs/
+# Generated inference preview images.
+#outputs/images/
+
+# NOTE: outputs/models/*.keras is intentionally NOT ignored —
+# the trained model is committed so the app runs out of the box.
+# The redundant timestamped final model, however, is ignored:
+outputs/models/final_model_*.keras
+
+# ---------------------------------------------------------
+# Server / runtime logs
+# ---------------------------------------------------------
+*.log
+server_out.log
+server_err.log
+
+# ---------------------------------------------------------
+# OS / editor cruft
+# ---------------------------------------------------------
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
