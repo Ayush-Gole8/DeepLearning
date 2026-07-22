@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Eco-Sorter · AI Waste Classifier</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>♻️</text></svg>" />
+</head>
+<body>
+  <div class="bg-orbs" aria-hidden="true">
+    <span class="orb orb-1"></span>
+    <span class="orb orb-2"></span>
+    <span class="orb orb-3"></span>
+  </div>
+
+  <main class="container">
+    <!-- HERO -->
+    <header class="hero">
+      <div class="badge">♻️ Powered by Deep Learning</div>
+      <h1 class="hero-title">Eco-Sorter<span class="dot">.</span></h1>
+      <p class="hero-subtitle">AI Waste Classifier</p>
+      <p class="hero-lead">
+        Drop in a photo of any item and let the model tell you exactly which
+        municipal bin it belongs to — instantly.
+      </p>
+    </header>
+
+    <!-- UPLOAD ZONE -->
+    <section class="panel">
+      <form id="upload-form">
+        <label id="dropzone" for="file-input" class="dropzone" tabindex="0">
+          <input type="file" id="file-input" accept="image/*" hidden />
+
+          <div class="dz-empty" id="dz-empty">
+            <div class="dz-icon">📸</div>
+            <p class="dz-title">Drag &amp; drop an image here</p>
+            <p class="dz-hint">or <span>browse your files</span></p>
+            <p class="dz-formats">PNG · JPG · WEBP — up to 16&nbsp;MB</p>
+          </div>
+
+          <div class="dz-preview" id="dz-preview" hidden>
+            <img id="preview-img" src="" alt="Uploaded preview" />
+            <div class="dz-overlay">
+              <span class="dz-overlay-text">Click or drop to replace</span>
+            </div>
+          </div>
+        </label>
+
+        <div class="actions">
+          <button type="submit" id="classify-btn" class="btn btn-primary" disabled>
+            <span class="btn-label">Classify Waste</span>
+            <span class="spinner" hidden></span>
+          </button>
+          <button type="button" id="reset-btn" class="btn btn-ghost" hidden>Reset</button>
+        </div>
+      </form>
+
+      <div id="error-box" class="error-box" hidden></div>
+    </section>
+
+    <!-- RESULT CARD -->
+    <section id="result-card" class="result-card" hidden>
+      <div class="result-head">
+        <div class="result-emoji" id="result-emoji">🧠</div>
+        <div>
+          <p class="result-eyebrow">Detected material</p>
+          <h2 class="result-material" id="result-material">—</h2>
+        </div>
+      </div>
+
+      <div class="confidence">
+        <div class="confidence-row">
+          <span>Confidence</span>
+          <span id="confidence-value">0%</span>
+        </div>
+        <div class="confidence-track">
+          <div class="confidence-fill" id="confidence-fill"></div>
+        </div>
+      </div>
+
+      <p class="result-verdict">
+        Send it to the <strong id="result-bin-label">—</strong> bin.
+      </p>
+    </section>
+
+    <!-- BINS -->
+    <section class="bins" id="bins">
+      <div class="bin" data-bin="biodegradable">
+        <div class="bin-body bin-green">
+          <div class="bin-lid"></div>
+          <div class="bin-face">🌱</div>
+          <div class="bin-check">✓</div>
+        </div>
+        <p class="bin-name">Green Bin</p>
+        <p class="bin-desc">Biodegradable</p>
+      </div>
+
+      <div class="bin" data-bin="recyclable">
+        <div class="bin-body bin-blue">
+          <div class="bin-lid"></div>
+          <div class="bin-face">♻️</div>
+          <div class="bin-check">✓</div>
+        </div>
+        <p class="bin-name">Blue Bin</p>
+        <p class="bin-desc">Recyclable</p>
+      </div>
+
+      <div class="bin" data-bin="non-recyclable">
+        <div class="bin-body bin-black">
+          <div class="bin-lid"></div>
+          <div class="bin-face">⚠️</div>
+          <div class="bin-check">✓</div>
+        </div>
+        <p class="bin-name">Black Bin</p>
+        <p class="bin-desc">Non-recyclable / Hazardous</p>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <p>Eco-Sorter · 10-class garbage classifier · MobileNetV2</p>
+    </footer>
+  </main>
+
+  <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
