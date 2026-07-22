@@ -45,7 +45,7 @@ outputs/models/final_model_*.keras
 *.log
 server_out.log
 server_err.log
-
+*.claude
 # ---------------------------------------------------------
 # OS / editor cruft
 # ---------------------------------------------------------
