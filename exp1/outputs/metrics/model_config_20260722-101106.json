@@ -1,0 +1,22 @@
+{
+    "model": "MobileNetV2",
+    "image_size": [
+        256,
+        256
+    ],
+    "batch_size": 32,
+    "optimizer": "AdamW",
+    "learning_rate": 0.001,
+    "classes": [
+        "battery",
+        "biological",
+        "cardboard",
+        "clothes",
+        "glass",
+        "metal",
+        "paper",
+        "plastic",
+        "shoes",
+        "trash"
+    ]
+}
